@@ -4,6 +4,11 @@
  */
 package javabasico;
 
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author angel
@@ -15,7 +20,7 @@ public class Javabasico {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        int edad = 22;
+          int edad = 22;
         Integer edad2 = new Integer(2);
         float x = edad2.floatValue();
         System.out.println(x);
@@ -112,7 +117,7 @@ public class Javabasico {
         }
         //Orden inverso
         System.out.println("--------------------");
-        for (int j = 4;   ; j = j -1) {
+        for (int j = 4; j >= 0; j = j -1) {
             System.out.println(edades3[j]);
         }
         System.out.println("Otra forma");
@@ -154,8 +159,85 @@ public class Javabasico {
         for (Perro perro : lista) {
             System.out.println(perro);
         }
-        } 
-                    
+        }
+        
+        System.out.println("------ArrayLIst-----");
+        //ArrayList de la clase perro
+        ArrayList mascotas = new ArrayList();
+        mascotas.add(new Perro("Poodle",1));
+        mascotas.add(new Perro("Doverman",1));
+        mascotas.add(new Perro("Akita",1));
+        mascotas.add(new Perro("Gran Danes",1));
+        mascotas.add(new Perro("Chihuahua",1));
+        
+        for(Object mascota : mascotas){
+            Perro tmp = (Perro)mascota;
+            System.out.println(tmp);
+        }
+        //Despues de la version 2 de java se agrego el concepto de clases 
+          
+        ArrayList <Perro>mascotas2 = new ArrayList();
+        mascotas2.add(new Perro("Poodle",1));
+        mascotas2.add(new Perro("Doverman",1));
+        mascotas2.add(new Perro("Akita",1));
+        mascotas2.add(new Perro("Gran Danes",1));
+        mascotas2.add(new Perro("Chihuahua",1));
+        
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Que raza quieres cambiar?");
+        String raza = "Akita";
+        
+        
+        for(Perro perro : mascotas2){
+            if(perro.getRaza().equals("Akita")){
+            perro.setTamano(4);
+        }
+            
+        }
+        System.out.println("-----------------");
+        System.out.println("Perro 2 es:"+ mascotas2.get(2));
+        System.out.println("'Eliminar el akita, index 3");
+        Perro p = mascotas2.remove(3);
+         for(Perro perro : mascotas2){
+             System.out.println(perro);
+         }
+        System.out.println("---------");
+        System.out.println("Perro sacado es:" + p);
+        mascotas2.set(1, new Perro("Boxer",3));
+        mascotas2.set(1, new Perro("Labrador",4));
+        System.out.println("----------");
+        for(Perro perro : mascotas2){
+            System.out.println(perro);
+        }
+        
+        System.out.println("Elige un numero entre 0 y 4");
+        int indice = teclado.nextInt();
+        Perro puppy = null;
+        float num = 10.0f;
+        try{
+         puppy = mascotas2.get(indice);
+         num = num/(float)indice;
+        System.out.println(mascotas2.get(indice));
+        }catch(IndexOutOfBoundsException ex){
+            System.out.println("Ocurrio un error"); 
+           System.out.println("Ocurrio un error, el valor debe estar entre cero y cuatro");
+           puppy = mascotas2.get(0);
+            System.out.println(ex);
+        }catch(InputMismatchException ime){
+            System.out.println("Solo deben ser numeros");
+            puppy = mascotas2.get(0);
+        }catch(Exeption e){
+            System.out.println("Ultimo recurso");
+        }finally{
+            System.out.println("En finally");
+            System.out.println(puppy);
+        }
+        
+        
+        //ERROR != EXEPCION
+        System.out.println("Se alcanzo el fin del programa!!");
+        
+        
         }
 
 
