@@ -5,6 +5,8 @@
 package interfacesusuarios2210;
 
 import ico.fes.iu.MiVentana;
+import ico.fes.iu.MiVentana2;
+import ico.fes.iu.swing.VentanaSwing;
 
 /**
  *
@@ -17,7 +19,9 @@ public class InterfacesUsuarios2210 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        MiVentana w= new MiVentana();
+        //MiVentana w= new MiVentana();
+        //MiVentana2 v2= new MiVentana2();
+        VentanaSwing vs = new VentanaSwing ();
     }
     
 }
